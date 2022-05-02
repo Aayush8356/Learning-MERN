@@ -1,18 +1,17 @@
 import { useState } from "react";
 const Home = () => {
-    let list = ['Apoorv','Mayank','Yash','Ashutosh'];
-    const [name,setName] = useState('Aayush');
-    const [age,setAge] = useState(10);
-    const clickHandle = () =>
-    {
-        setName(list[Math.floor(Math.random()*4)]);
-        setAge(Math.floor(Math.random()*10));
-    }
+    const [pers,setPers] = useState([{Name : 'Aayush', Class : 90 , ID : 1},
+                 {Name : 'Ashutosh', Class : 100 , ID : 2},
+                {Name : 'Mayank', Class : 95 , ID : 3}]);
+    
     return ( 
         <div className="home">
-            <h2>Homepage</h2>
-            <p> {name} {age} </p>
-            <button onClick={clickHandle}>click me</button>
+        {pers.map((per)  => (
+            <div className="pers-preview" key = {per.ID}>
+                <h2>{per.Name}</h2>
+                <p>with cgpa { per.Class }</p>
+            </div>
+        ))}
         </div>
         
      );
